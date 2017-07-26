@@ -8,6 +8,10 @@ main {
   flex: 1 0 auto;
 }
 
-nav, footer.page-footer {
-  background-color: #7e57c2;
+nav, .page-footer, .active {
+  background-color: #7e57c2 !important;
+}
+
+.card-action a {
+  color: #7e57c2 !important;
 }
