@@ -11,9 +11,9 @@ $(document).ready(function() {
 
   $('#new-contact').submit(sendPost)
   $('#edit-contact').submit(sendPut)
-  // $('#delete-contact').submit(sendDelete)
+  $('#delete-contact').click(sendDelete)
 
-})
+});
 
 function appendContacts(data) {
   $('#contacts > li.collection-item').remove()
@@ -55,7 +55,6 @@ function formatPhone(string) {
   return array.join("")
 }
 
-
 function sendPost(event) {
   event.preventDefault()
   let post = {
@@ -68,7 +67,6 @@ function sendPost(event) {
     .then(data => {
       $.get(baseURL).then(appendContacts)
     })
-  // clear form fields
   $('#first_name').val('')
   $('#last_name').val('')
   $('#phone').val('')
@@ -91,9 +89,21 @@ function sendPut(event) {
       $.get(baseURL).then(appendContacts)
     }
   })
-  // clear form fields
   $('#edit-first').val('')
   $('#edit-last').val('')
   $('#edit-phone').val('')
   $('#edit-email').val('')
+  $('.card').hide()
+}
+
+function sendDelete(event) {
+  event.preventDefault()
+  $.ajax({
+    url: `${baseURL}/${putOrEditId}`,
+    method: 'DELETE',
+    success: data => {
+      $.get(baseURL).then(appendContacts)
+    }
+  })
+  $('.card').hide()
 }
