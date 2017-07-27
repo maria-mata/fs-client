@@ -8,10 +8,19 @@ main {
   flex: 1 0 auto;
 }
 
-nav, .page-footer, .active {
+nav, .page-footer, li.active , .btn {
   background-color: #7e57c2 !important;
 }
 
 .card-action a {
   color: #7e57c2 !important;
+}
+
+/*#contacts {
+  height: 20em;
+  overflow: scroll;
+}*/
+
+#new-contact {
+  display: none;
 }
