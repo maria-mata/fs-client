@@ -46,12 +46,14 @@ function formatPhone(string) {
 function sendPost(event) {
   event.preventDefault()
   let post = {
-    first_name: $('first_name').val(),
-    last_name: $('last_name').val(),
-    phone: $('phone').val(),
-    email: $('email').val()
+    first_name: $('#first_name').val(),
+    last_name: $('#last_name').val(),
+    phone: $('#phone').val(),
+    email: $('#email').val()
   }
 
   $.post(baseURL, post)
-    .then(appendContacts)
-};
+    .then(data => {
+      $.get(baseURL).then(appendContacts)
+    })
+}
