@@ -15,16 +15,6 @@
           <a href="#!" class="brand-logo">AddressBook</a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
-            <!-- <li><a href="sass.html">Sass</a></li>
-            <li><a href="badges.html">Components</a></li>
-            <li><a href="collapsible.html">Javascript</a></li>
-            <li><a href="mobile.html">Mobile</a></li> -->
-          </ul>
-          <ul class="side-nav" id="mobile-demo">
-            <!-- <li><a href="sass.html">Sass</a></li>
-            <li><a href="badges.html">Components</a></li>
-            <li><a href="collapsible.html">Javascript</a></li>
-            <li><a href="mobile.html">Mobile</a></li> -->
           </ul>
         </div>
       </nav>
@@ -35,7 +25,7 @@
           <ul id="contacts" class="collection with-header">
             <li class="collection-header"><h4>Contacts</h4></li>
           </ul>
-          <a id="add" class="waves-effect waves-light btn">Add New</a>
+          <a href="#newModal" class="waves-effect waves-light btn modal-trigger">Add New</a>
         </div>
         <div class="col s12 m4">
           <div class="card">
@@ -43,39 +33,78 @@
               <span class="card-title">Contact Detail</span>
             </div>
             <div class="card-action">
-              <a href="#">Edit</a>
-              <a href="#">Delete</a>
+              <a href="#editModal" class="modal-trigger">Edit</a>
+              <a href="#deleteModal" class="modal-trigger">Delete</a>
             </div>
           </div>
         </div>
       </div>
-      <div class="row">
-        <form id="new-contact" class="col s12 m8">
-          <h5>New Contact</h5>
-          <div class="row">
-            <div class="input-field col s6">
-              <input id="first_name" type="text" class="validate">
-              <label for="first_name">First Name</label>
+      <div id="newModal" class="modal open">
+        <div class="modal-content">
+          <form id="new-contact" class="col s12 m8">
+            <h5>New Contact</h5>
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="first_name" type="text" class="validate">
+                <label for="first_name">First Name</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="last_name" type="text" class="validate">
+                <label for="last_name">Last Name</label>
+              </div>
             </div>
-            <div class="input-field col s6">
-              <input id="last_name" type="text" class="validate">
-              <label for="last_name">Last Name</label>
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="phone" type="text" class="validate">
+                <label for="phone">Phone</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="email" type="email" class="validate">
+                <label for="email">Email</label>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s6">
-              <input id="phone" type="text" class="validate">
-              <label for="phone">Phone</label>
+            <div class="row">
+              <input class="waves-effect waves-light btn" type="submit" value="Submit">
             </div>
-            <div class="input-field col s6">
-              <input id="email" type="email" class="validate">
-              <label for="email">Email</label>
+          </form>
+        </div>
+      </div>
+      <div id="editModal" class="modal open">
+        <div class="modal-content">
+          <form id="edit-contact" class="col s12 m8">
+            <h5>Edit Contact</h5>
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="edit-first" type="text" class="validate">
+                <label for="first_name">First Name</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="edit-last" type="text" class="validate">
+                <label for="last_name">Last Name</label>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <input class="waves-effect waves-light btn" type="submit" value="Submit">
-          </div>
-        </form>
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="edit-phone" type="text" class="validate">
+                <label for="phone">Phone</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="edit-email" type="email" class="validate">
+                <label for="email">Email</label>
+              </div>
+            </div>
+            <div class="row">
+              <input class="waves-effect waves-light btn" type="submit" value="Submit">
+            </div>
+          </form>
+        </div>
+      </div>
+      <div id="deleteModal" class="modal open">
+        <div class="modal-content">
+          <h5>Delete Contact</h5>
+          <p>Are you sure you would like to <u>permanently delete</u> this contact?</p>
+          <button class="waves-effect waves-light btn" type="button" name="button">Delete</button>
+        </div>
       </div>
     </main>
     <footer class="page-footer">
@@ -85,19 +114,11 @@
             <h5 class="white-text">AddressBook</h5>
             <p class="grey-text text-lighten-4">Keep your contacts organized.</p>
           </div>
-          <!-- <div class="col l4 offset-l2 s12">
-            <h5 class="white-text">Links</h5>
-            <ul>
-              <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-            </ul>
-          </div> -->
         </div>
       </div>
       <div class="footer-copyright">
         <div class="container">
         © 2017 AddressBook
-        <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
         </div>
       </div>
     </footer>

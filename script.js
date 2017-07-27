@@ -1,14 +1,15 @@
 const baseURL = 'https://enigmatic-citadel-64393.herokuapp.com/contacts'
 
 $(document).ready(function() {
+  $('.card').hide()
+
   $.get(baseURL)
     .then(appendContacts)
 
-  $('#add').click(function() {
-    $('#new-contact').show()
-  })
+  $('.modal').modal();
 
   $('#new-contact').submit(sendPost)
+
 
 })
 
@@ -27,6 +28,7 @@ function appendContacts(data) {
 }
 
 function appendDetail(data) {
+  $('.card').show()
   $('#detail > p').remove()
   let content = `<p>${data[0].first_name} ${data[0].last_name}</p>
                 <p>${formatPhone(data[0].phone)}</p>
@@ -51,9 +53,19 @@ function sendPost(event) {
     phone: $('#phone').val(),
     email: $('#email').val()
   }
-
   $.post(baseURL, post)
     .then(data => {
       $.get(baseURL).then(appendContacts)
     })
+  // clear form fields
+  $('#first_name').val('')
+  $('#last_name').val('')
+  $('#phone').val('')
+  $('#email').val('')
 }
+
+
+// function sendPut(event) {
+//   event.preventDefault()
+//
+// }

@@ -16,11 +16,7 @@ nav, .page-footer, li.active , .btn {
   color: #7e57c2 !important;
 }
 
-/*#contacts {
-  height: 20em;
+#contacts {
+  height: 30em;
   overflow: scroll;
-}*/
-
-#new-contact {
-  display: none;
 }
