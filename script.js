@@ -1,4 +1,5 @@
 const baseURL = 'https://enigmatic-citadel-64393.herokuapp.com/contacts'
+var putOrEditId = ''
 
 $(document).ready(function() {
   $('.card').hide()
@@ -9,7 +10,8 @@ $(document).ready(function() {
   $('.modal').modal();
 
   $('#new-contact').submit(sendPost)
-
+  $('#edit-contact').submit(sendPut)
+  // $('#delete-contact').submit(sendDelete)
 
 })
 
@@ -34,6 +36,15 @@ function appendDetail(data) {
                 <p>${formatPhone(data[0].phone)}</p>
                 <p>${data[0].email}</p>`
   $('#detail').append(content)
+  editModal(data[0].first_name, data[0].last_name, data[0].phone, data[0].email)
+  putOrEditId = data[0].id
+}
+
+function editModal(first, last, phone, email) {
+  $('#edit-first').val(first)
+  $('#edit-last').val(last)
+  $('#edit-phone').val(phone)
+  $('#edit-email').val(email)
 }
 
 function formatPhone(string) {
@@ -65,7 +76,24 @@ function sendPost(event) {
 }
 
 
-// function sendPut(event) {
-//   event.preventDefault()
-//
-// }
+function sendPut(event) {
+  event.preventDefault()
+  $.ajax({
+    url: `${baseURL}/${putOrEditId}`,
+    method: 'PUT',
+    data: {
+      first_name: $('#edit-first').val(),
+      last_name: $('#edit-last').val(),
+      phone: $('#edit-phone').val(),
+      email: $('#edit-email').val()
+    },
+    success: data => {
+      $.get(baseURL).then(appendContacts)
+    }
+  })
+  // clear form fields
+  $('#edit-first').val('')
+  $('#edit-last').val('')
+  $('#edit-phone').val('')
+  $('#edit-email').val('')
+}
